@@ -1,0 +1,54 @@
+# RangeDataViewer CMake config file
+#
+# This file sets the following variables:
+# RangeDataViewer_FOUND - Always TRUE.
+# RangeDataViewer_INCLUDE_DIRS - Directories containing the RangeDataViewer include files.
+# RangeDataViewer_IDL_DIRS - Directories containing the RangeDataViewer IDL files.
+# RangeDataViewer_LIBRARIES - Libraries needed to use RangeDataViewer.
+# RangeDataViewer_DEFINITIONS - Compiler flags for RangeDataViewer.
+# RangeDataViewer_VERSION - The version of RangeDataViewer found.
+# RangeDataViewer_VERSION_MAJOR - The major version of RangeDataViewer found.
+# RangeDataViewer_VERSION_MINOR - The minor version of RangeDataViewer found.
+# RangeDataViewer_VERSION_REVISION - The revision version of RangeDataViewer found.
+# RangeDataViewer_VERSION_CANDIDATE - The candidate version of RangeDataViewer found.
+
+message(STATUS "Found RangeDataViewer-@PROJECT_VERSION@")
+set(RangeDataViewer_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(RangeDataViewer_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(RangeDataViewer_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(RangeDataViewer_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(RangeDataViewer_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(RangeDataViewer_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(RangeDataViewer_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(RangeDataViewer_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(RangeDataViewer_VERSION @PROJECT_VERSION@)
+set(RangeDataViewer_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(RangeDataViewer_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(RangeDataViewer_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(RangeDataViewer_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

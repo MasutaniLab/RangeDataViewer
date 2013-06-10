@@ -152,7 +152,11 @@ public class RangeDataViewerImpl extends DataFlowComponentBase {
      */
     @Override
     protected ReturnCode_t onExecute(int ec_id) {
-	
+	    if(this.m_rangeIn.isNew()) {
+	    	this.m_rangeIn.read();
+	    	panel.setRangeData(m_range.v);
+	    	panel.repaint();
+	    }
         return super.onExecute(ec_id);
     }
 

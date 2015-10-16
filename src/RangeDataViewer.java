@@ -27,7 +27,7 @@ public class RangeDataViewer implements RtcNewFunc, RtcDeleteFunc, RegisterModul
     	    "description",       "Range Data Viewer Component",
     	    "version",           "1.0.0",
     	    "vendor",            "Sugar Sweet Robotics",
-    	    "category",          "Experimenta",
+    	    "category",          "Sensor",
     	    "activity_type",     "STATIC",
     	    "max_instance",      "1",
     	    "language",          "Java",
